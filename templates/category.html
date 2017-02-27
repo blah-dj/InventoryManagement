@@ -1,0 +1,21 @@
+<!doctype html>
+<title>Display Inventory</title>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+<div class="page">
+  <h1>Available Categories</h1>
+  <select form="category">
+    {% for data in category %}
+      <option value={{data.category}}>{{data.category}}</option>
+    {% endfor %}
+  </select>
+  <form action="/display" id="category">
+    <button onclick="getcategory()">submit</button>
+  </form>  
+  {% block body %}{% endblock %}
+  <script>
+    function getcategory() {
+      var x = document.getElementById("category").value;
+      alert('you selected' + x);
+    }
+  </script>
+</div>
