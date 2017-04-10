@@ -1,0 +1,28 @@
+<!doctype html>
+<title>Update Item in Inventory</title>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+<div class="page">
+  <a href="/home"><img src="/static/home.png" alt="Home" style="width:42px;height:42px;border:0;"/></a>
+  <h1>Update Item</h1>
+  <form id="category" action="/add_item/">
+    <input type="text" name="category" disabled value={{category}}>
+    <input type="text" name="product" disabled value="{{item}}">
+    <input type="image" src="/static/add.jpg" alt="Add" style="width:35px;height:35px;border:0;" name="add" onclick="return add();">
+    <!-- value="{{item}}_{{category}}_{{quantity}}_add"-->
+    <input type="text" id="quantity" value="{{quantity}}" size="4" name="qty">
+    <input type="image" src="/static/subtract.jpg" alt="Subtract" style="width:35px;height:35px;border:0;" name="minus" onclick="return minus();">
+    <input name="item" type="hidden" value="{{item}}_{{category}}">
+    <input type="submit" value="Submit">
+  </form>
+  {% block body %}{% endblock %}
+  <script>
+    function add() {
+      document.getElementById("quantity").value++;
+      return false;
+    }
+    function minus() {
+      document.getElementById("quantity").value--;
+      return false;
+    }
+  </script>
+</div>

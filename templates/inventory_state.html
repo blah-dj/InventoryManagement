@@ -1,0 +1,30 @@
+<!doctype html>
+<title>Current Inventory</title>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+<div class="page">
+  <a href="/home"><img src="/static/home.png" alt="Home" style="width:42px;height:42px;border:0;"/></a>
+  <h1>Available Items</h1>
+  <pr>Click the radio button to update status or Add new button to add a new item</pr>
+  <form id="category" action="/add_item/">
+    <table>
+      <tr>
+        <th>Select</th>
+        <th>Item</th>
+        <th>Quantity</th>
+        <th>Category</th>
+      </tr>
+      {% for data in category %}
+      <tr>
+        <td><input type=radio name="item" value="{{data.name}}_{{data.category}}_{{data.quantity}}"</td>
+        <td>{{data.name}}</td>
+        <td>{{data.quantity}}</td>
+        <td>{{data.category}}</td>
+      </tr>
+    {% endfor %}
+    </table>
+    <input type="submit" value="Update">
+    <input type="submit" value="Add New Item" name="item"/>
+    
+  </form>  
+  {% block body %}{% endblock %}
+</div>
