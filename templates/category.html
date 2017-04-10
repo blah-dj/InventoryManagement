@@ -2,20 +2,15 @@
 <title>Display Inventory</title>
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 <div class="page">
+  <a href="/home"><img src="/static/home.png" alt="Home" style="width:42px;height:42px;border:0;"/></a>
   <h1>Available Categories</h1>
-  <select form="category">
+  <form id="category" action="/display/">
+    <select name="getinventoryfor" required>
     {% for data in category %}
       <option value={{data.category}}>{{data.category}}</option>
     {% endfor %}
   </select>
-  <form action="/display" id="category">
-    <button onclick="getcategory()">submit</button>
+    <input type="submit" value="Submit">
   </form>  
   {% block body %}{% endblock %}
-  <script>
-    function getcategory() {
-      var x = document.getElementById("category").value;
-      alert('you selected' + x);
-    }
-  </script>
 </div>

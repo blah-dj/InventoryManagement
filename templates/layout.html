@@ -2,6 +2,7 @@
 <title>Display Inventory</title>
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 <div class="page">
+  <a href="/home"><img src="home.png" alt="Home"/></a>
   <h1>Inventory</h1>
   {% for message in get_flashed_messages() %}
     <div class="flash">{{ message }}</div>
